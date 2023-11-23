@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f57075b-0587-457d-9f2e-b72247f9aff1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/Valid Anagram/approach_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/Valid Anagram/approach_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/Valid Anagram/q.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
