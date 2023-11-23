@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f57075b-0587-457d-9f2e-b72247f9aff1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/Container with most water/approach_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/Container with most water/q.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/valid parenthesis/a.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/valid parenthesis/approach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
