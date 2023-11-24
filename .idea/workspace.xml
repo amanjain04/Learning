@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f57075b-0587-457d-9f2e-b72247f9aff1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/maximum subarray/approach.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/maximum subarray/q.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/longest_common_prfix/approach.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Competitive Coding/python/longest_common_prfix/q.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
