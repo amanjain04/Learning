@@ -1,0 +1,66 @@
+Slowly Changing Dimensions (SCDs) are a concept in data warehousing used to manage changes in dimension data over time. Dimensions are the descriptive attributes of your data (e.g., customer, product), and as this data changes, it is essential to track those changes for historical accuracy or analytical purposes.
+
+Types of Slowly Changing Dimensions
+Type 0: Fixed Dimensions
+No changes are allowed to the dimension. The values remain fixed once created.
+Example: A product code that is immutable.
+
+Type 1: Overwrite
+Updates the dimension value by overwriting the old value.
+Historical data is not preserved.
+Example:
+Original: Customer Name = "John Smith"
+Update: Customer Name = "John Doe"
+Use Case: When historical accuracy is not required.
+
+Type 2: Versioning (Full History)
+Preserves the history by adding a new row for each change in the dimension.
+Includes additional columns like effective_date, end_date, and current_flag to track the timeline.
+Example:
+CustomerID   Name          Start_Date   End_Date     Current_Flag
+1            John Smith    2020-01-01   2021-01-01   N
+1            John Doe      2021-01-02   NULL         Y
+Use Case: When historical data needs to be preserved.
+
+Type 3: Add New Attribute
+Adds a new column to store the previous value of the dimension.
+Tracks limited history, as only the most recent change is recorded.
+Example:
+CustomerID   Current_Name   Previous_Name
+1            John Doe       John Smith
+Use Case: When limited history is sufficient.
+
+Type 4: Historical Table
+Maintains a separate historical table to store old values, while the main table contains the current data.
+Example:
+Current Table:
+CustomerID   Name
+1            John Doe
+Historical Table:
+CustomerID   Name          Start_Date   End_Date
+1            John Smith    2020-01-01   2021-01-01
+
+Type 6: Hybrid (Type 1 + Type 2 + Type 3)
+Combines the approaches of Types 1, 2, and 3.
+Maintains the current value, historical records, and previous values within a single table.
+Example:
+CustomerID   Current_Name   Previous_Name   Start_Date   End_Date     Current_Flag
+1            John Doe       John Smith      2021-01-02   NULL         Y
+Choosing the Right SCD Type
+The choice depends on:
+
+Business Requirements: Does your use case need historical data or just the current state?
+Query Complexity: Type 2 can increase query complexity due to additional rows.
+Storage Considerations: Type 2 and Type 4 require more storage.
+Performance: Types 1 and 3 are faster since they don't store multiple versions.
+Implementation Steps
+Identify the dimension table and attributes that change over time.
+Choose the SCD type based on the use case.
+Create the necessary table schema (e.g., additional columns for Type 2 or Type 3).
+Implement ETL processes to handle updates based on the chosen SCD type.
+Detect changes between the source and target.
+Update or insert rows accordingly.
+Tools for SCD Management
+ETL Tools: Informatica, Talend, Apache Nifi, AWS Glue, etc.
+Database Features: Triggers, stored procedures, or frameworks like dbt.
+Big Data: Tools like Apache Spark for scalable ETL pipelines.
