@@ -22,3 +22,14 @@ Executors: WHo actual do the work
         spark.executor.memory
         spark.executor.cores  : how many task can happen on each machine (default 4 should not go higher than 6)
         spark.executor.memoryOverheadFactor
+
+The types of joins in spark:
+    1. Shuffle sort merge join:
+        - Default JOin strategy since Spark 2.3
+        - Works when both sides of the join are large
+    2. Broadcast Hash join 
+        - Works well if the left side of the join is small
+        - sparl.sql.autobroadcastjointhreshold (default is 10 MBs can go as high as 8GB, you will experience weird memory problems > 1GBs)
+        - A join without Shuffle 
+    3. Bucket Join 
+        - A join without Shuffle
