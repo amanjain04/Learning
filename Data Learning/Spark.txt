@@ -33,3 +33,29 @@ The types of joins in spark:
         - A join without Shuffle 
     3. Bucket Join 
         - A join without Shuffle
+        - Both datasets must have the same number of buckets for the bucket join to work efficiently.
+
+Shuffle:
+Shuffle Partition and Parallelism are linked:
+    - spark.sql.Shuffle.Partition and spark.default.parallelism
+
+Is Shuffle good or bad?
+    - At low to medium volumn
+        - Its really good and makes our lives easier
+    - At high volumes > 10TBs is painful
+
+Shuffle and skew:
+Sometimes some partitions have dramatically more data than others, This can happen because:
+    - Not enough partitions 
+
+Check data is skewed:
+    - more scientific way is to do a box and whiskers plot of the data 
+
+Ways to deal with skew:
+    - Adaptive query execution - only in Spark 3+
+        - Set spark.sql.adaptive.enabled = True
+    - Salting the group by - best option before Spark 3 
+        - Group by a random number, aggregate + group by again
+
+How to look at Spark query plans:
+    - Use explain() on your dataframes : show join strategies
