@@ -1,0 +1,24 @@
+Apache Spark is an open-source, distributed processing system designed for big data workloads. 
+It processes data in parallel across a cluster of computers, providing scalability and high performance. 
+Spark supports various programming languages like Python, Scala, Java, and R.
+
+The Plan is evaluated lazily.
+
+Driver :
+Driver Reads the Plan 
+Important Spark Driver Settings:
+    1. spark.driver.memory : Specifies the amount of memory allocated to the driver process. 
+    The driver is responsible for orchestrating tasks, scheduling, and maintaining metadata about the job.
+    2. spark.driver.memoryOverheadFactor : Defines the additional memory overhead allocated to the driver for non-JVM processes,
+     such as Python or R (in PySpark or SparkR) or memory required for off-heap storage.
+
+Driver needs to determine a few things:
+    1. When to actually start executing the job and stop being lazy.
+    2. How to join datasets
+    3. How much parallelism each step needs.
+
+Executors: WHo actual do the work 
+    the Driver passes the plan to the executor:
+        spark.executor.memory
+        spark.executor.cores  : how many task can happen on each machine (default 4 should not go higher than 6)
+        spark.executor.memoryOverheadFactor
