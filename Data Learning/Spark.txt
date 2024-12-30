@@ -59,3 +59,10 @@ Ways to deal with skew:
 
 How to look at Spark query plans:
     - Use explain() on your dataframes : show join strategies
+
+Plan study:
+    select = project
+    Exchange = shuffle 
+
+Optimization:
+    never use sort, instead use sortWithinPartitions
