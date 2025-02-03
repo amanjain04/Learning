@@ -37,7 +37,16 @@ Explanation: a@b.com is repeated two times.
 
 
 Questions :
+1.
 
 select distinct p.email
 from Person p join Person t
     on p.email = t.email and p.id <> t.id
+
+
+2. 
+
+select Email
+from Person
+group by Email
+having count(Email) > 1;
