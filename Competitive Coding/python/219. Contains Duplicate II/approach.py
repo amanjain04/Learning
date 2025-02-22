@@ -1,10 +1,13 @@
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        hashset = set()
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        res = dict()
 
-        for i in nums:
-            if i in hashset:
-                return True
-            hashset.add(i)
+        for i in range(len(nums)):
+            if nums[i] not in res:
+                res[nums[i]]  = i
+            else:
+                if ((i - res[nums[i]])  <=k):
+                    return True
+                res[nums[i]] = i
 
         return False
