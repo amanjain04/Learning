@@ -67,3 +67,18 @@ Explanation: Both employees with id 1 and 3 have the most experience among the e
 
 Solutions:
 
+
+with cte as (
+    select p.project_id
+        , e.employee_id
+        , experience_years
+        , Dense_Rank() over (partition by project_id order by experience_years desc) as rn
+    from Project p
+    inner join Employee e 
+        on p.employee_id = e.employee_id
+)
+select project_id
+    , employee_id
+from cte
+where rn = 1
+
