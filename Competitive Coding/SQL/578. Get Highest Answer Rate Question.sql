@@ -49,9 +49,19 @@ Question 369 was showed 1 time and was not answered. The answer rate of question
 Question 285 has the highest answer rate.
 
 Solutions : 
-select 
-    question_id survey_log
-from surveylog
-group by question_id
-order by count(answer_id) desc, question_id
-limit 1
+WITH answer_rate AS
+   (
+   SELECT question_id, 
+   SUM(CASE WHEN action = 'answer' THEN 1 ELSE 0 END) 
+   / SUM(CASE WHEN action = 'show' THEN 1 ELSE 0 END) AS rate
+   FROM surveylog
+   GROUP BY question_id
+   )
+SELECT question_id AS survey_log
+FROM 
+   (
+   SELECT question_id, 
+      RANK()OVER(ORDER BY rate DESC question_id) AS rnk
+   FROM answer_rate
+   ) AS t0
+WHERE rnk = 1
