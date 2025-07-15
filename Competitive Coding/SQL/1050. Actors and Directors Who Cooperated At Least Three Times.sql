@@ -43,17 +43,11 @@ Explanation: The only pair is (1, 1) where they cooperated exactly 3 times.
 
 
 Solutions :
-with cte as (
-    select actor_id
-    , director_id
-    , count(*) count_max
-    from ActorDirector
-    group by actor_id
-    , director_id
-)
-select actor_id
-    , director_id
-from cte 
-where count_max = (select max(count_max) from cte)
+
+
+select actor_id, director_id
+from ActorDirector
+group by actor_id, director_id
+having count(*) >=3
 
 
